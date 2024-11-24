@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Clone</title>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fd;
+            color: #333;
+            padding: 20px;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stats-cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            flex: 1;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+
+        .card span {
+            display: block;
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .students-performance,
+        .attendance-report {
+            flex: 1;
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .students-performance ul {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .students-performance li {
+            margin: 5px 0;
+        }
+
+        .attendance-report {
+            position: relative;
+        }
+
+        .teaching-lessons {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .teaching-lessons ul {
+            list-style: none;
+        }
+
+        .teaching-lessons li {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .reminder-btn {
+            background: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .reminder-btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="stats-cards">
+            <div class="card">02/08<br><span>Total Classes</span></div>
+            <div class="card">02/08<br><span>Total Students</span></div>
+            <div class="card">40/50<br><span>Total Lessons</span></div>
+            <div class="card">12/20<br><span>Total Hours</span></div>
+        </div>
+
+        <div class="main-content">
+            <div class="students-performance">
+                <h3>Students Performance</h3>
+                <ul>
+                    <li>Oliver James - 98%</li>
+                    <li>Emma Smith - 92%</li>
+                    <li>Noah Brown - 95%</li>
+                    <li>Sophia Johnson - 90%</li>
+                </ul>
+            </div>
+            <div class="attendance-report">
+                <h3>Total Attendance Report</h3>
+                <canvas id="attendanceChart"></canvas>
+            </div>
+        </div>
+
+        <div class="teaching-lessons">
+            <h3>Teaching Lessons</h3>
+            <ul>
+                <li>
+                    <span>Start from: Today, 10:30 AM</span>
+                    <span>High Fidelity Wireframes - Mathematics</span>
+                    <span>2 Lessons, 60 min</span>
+                    <button class="reminder-btn">Reminder</button>
+                </li>
+                <!-- Repeat similar list items -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['18', '19', '20', '21', '22', '23', '24'],
+                datasets: [{
+                    label: 'Attendance',
+                    data: [654, 1230, 731, 876, 320, 4533],
+                    borderColor: '#4caf50',
+                    borderWidth: 2,
+                    fill: false,
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                    },
+                    y: {
+                        beginAtZero: true,
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
